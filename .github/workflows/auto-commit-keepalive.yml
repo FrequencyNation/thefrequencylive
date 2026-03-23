@@ -2,8 +2,8 @@ name: Auto Commit Keepalive
 
 on:
   schedule:
-    - cron: "0 0 * * 0"
-  workflow_dispatch:
+    - cron: "0 0 * * 0"    # Once per week (Sundays at midnight)
+  workflow_dispatch:        # Manual trigger option
 
 jobs:
   commit:
