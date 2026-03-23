@@ -24,12 +24,6 @@
       "maxDuration": 10
     }
   },
-  "crons": [
-    {
-      "path": "/api/system/keepalive",
-      "schedule": "0 */6 * * *"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
