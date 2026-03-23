@@ -15,11 +15,11 @@
     
     <style>
         :root {
-            --primary: #1E40AF;        /* Deep Blue */
-            --primary-dark: #1E3A8A;   /* Darker Blue */
-            --primary-light: #3B82F6;  /* Bright Blue */
-            --accent: #60A5FA;         /* Light Blue */
-            --gold: #D97706;           /* Amber for accents */
+            --primary-dark: #1E3A8A;
+            --primary: #1E40AF;
+            --primary-light: #3B82F6;
+            --accent: #60A5FA;
+            --gold: #D97706;
             --white: #FFFFFF;
             --gray-50: #F8FAFC;
             --gray-100: #F1F5F9;
@@ -27,11 +27,12 @@
             --gray-300: #CBD5E1;
             --gray-600: #475569;
             --gray-700: #334155;
-            --gray-800: #1E293B;       /* Footer background - lighter */
+            --gray-800: #1E293B;
             --gray-900: #0F172A;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --error: #EF4444;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 32px rgba(0,0,0,0.15);
         }
         
         * {
@@ -43,9 +44,8 @@
         body {
             font-family: 'Inter', sans-serif;
             background: var(--white);
-            color: var(--gray-900);
+            color: var(--gray-800);
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
         h1, h2, h3, .serif {
@@ -60,7 +60,7 @@
             padding: 0 20px;
         }
         
-        /* Navigation - Clean White/Blue */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -149,7 +149,7 @@
             background: var(--gray-100);
         }
         
-        /* Hero Section - Blue Gradient */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
             color: var(--white);
@@ -187,7 +187,7 @@
             gap: 8px;
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
-            padding: 8px 20px;
+            padding: 8px 24px;
             border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -266,7 +266,7 @@
             border-color: var(--white);
         }
         
-        /* Live Status Bar - Solid Blue */
+        /* Live Status Bar */
         .live-status-bar {
             background: var(--primary-dark);
             color: var(--white);
@@ -520,7 +520,7 @@
             gap: 16px;
         }
         
-        /* Honeypot - hidden anti-spam */
+        /* Honeypot */
         .honeypot {
             position: absolute;
             left: -9999px;
@@ -674,7 +674,7 @@
         }
         
         .toast.error {
-            border-left-color: var(--error);
+            border-left-color: #EF4444;
         }
         
         @keyframes slideIn {
@@ -690,8 +690,8 @@
         
         /* FIXED FOOTER - Better Contrast */
         footer {
-            background: var(--gray-800); /* Changed from gray-900 to gray-800 for visibility */
-            color: #CBD5E1; /* Light gray for better contrast */
+            background: var(--gray-800);
+            color: #CBD5E1;
             padding: 60px 0 30px;
         }
         
@@ -718,7 +718,7 @@
         }
         
         .footer-section a {
-            color: #94A3B8; /* Slightly darker than text for hierarchy but still visible */
+            color: #94A3B8;
             text-decoration: none;
             transition: all 0.2s;
             display: inline-flex;
@@ -944,6 +944,15 @@
             background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(30,64,175,0.3);
+        }
+        
+        .urgent-badge {
+            background: #EF4444;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
         }
         
         /* Loading State */
@@ -1207,7 +1216,7 @@
                     <div class="form-group">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500;">
                             <input type="checkbox" id="isUrgent" style="width: auto; height: auto;">
-                            <span>Mark as urgent (needs immediate prayer)</span>
+                            <span>Mark as urgent <span class="urgent-badge">URGENT</span></span>
                         </label>
                     </div>
                 </div>
@@ -1322,7 +1331,7 @@
                         <a href="https://www.tiktok.com/@thefrequencylive1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/share/1H7chquiTd/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/thefrequencylive1" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/TheFreqHQlive" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://x.com/TheFreqHQlive" target="_blank" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -1400,7 +1409,7 @@
                 </div>
                 <div class="form-group">
                     <label style="display: flex; align-items: center; gap: 8px; font-weight: 500;">
-                        <input type="checkbox" id="testimonyConsent" required style="width: auto; height: auto;">
+                        <input type="checkbox" id="testimonyConsent" required>
                         <span>I consent to my testimony being shared publicly *</span>
                     </label>
                 </div>
@@ -1431,7 +1440,6 @@
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-                // Reset icon after hiding
                 setTimeout(() => {
                     toast.querySelector('i').className = 'fas fa-check-circle';
                 }, 300);
@@ -1442,7 +1450,6 @@
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
             
-            // Change icon
             const btn = document.querySelector('.mobile-menu-btn i');
             if (navLinks.classList.contains('active')) {
                 btn.className = 'fas fa-times';
@@ -1456,7 +1463,6 @@
             const container = document.getElementById('videoContainer');
             const placeholder = document.getElementById('videoPlaceholder');
             
-            // Show loading state
             placeholder.innerHTML = `
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
                     <div class="loading"></div>
@@ -1464,7 +1470,6 @@
                 </div>
             `;
             
-            // Create iframe with proper sizing
             setTimeout(() => {
                 container.innerHTML = `
                     <iframe 
@@ -1501,7 +1506,6 @@
         async function submitPrayer(event) {
             event.preventDefault();
             
-            // Honeypot check
             const website = document.getElementById('website').value;
             const confirmEmail = document.getElementById('confirm_email').value;
             if (website || confirmEmail) {
@@ -1535,12 +1539,11 @@
                 });
                 
                 const result = await response.json();
-                if (!response.ok) throw new Error(result.error || 'Submission failed');
+                if (!response.ok) throw new Error(result.error);
                 
                 showToast('🙏 Prayer request submitted! Our intercessors will stand with you.');
                 document.getElementById('prayerForm').reset();
                 
-                // Reload recent prayers
                 loadRecentPrayers();
                 loadStats();
                 
@@ -1591,7 +1594,7 @@
                 });
                 
                 const result = await response.json();
-                if (!response.ok) throw new Error(result.error || 'Submission failed');
+                if (!response.ok) throw new Error(result.error);
                 
                 showToast('✨ Thank you! Your testimony has been submitted for review.');
                 closeTestimonyModal();
@@ -1670,14 +1673,12 @@
             return div.innerHTML;
         }
         
-        // Close modal on escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeTestimonyModal();
             }
         });
         
-        // Close modal on outside click
         window.onclick = function(event) {
             const modal = document.getElementById('testimonyModal');
             if (event.target === modal) {
@@ -1685,7 +1686,6 @@
             }
         };
         
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1695,13 +1695,11 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu if open
                     document.getElementById('navLinks').classList.remove('active');
                 }
             });
         });
         
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             setInterval(updateCountdown, 1000);
             updateCountdown();
@@ -1709,19 +1707,13 @@
             loadTestimonies();
             loadStats();
             
-            // Navbar scroll effect
-            let lastScroll = 0;
             window.addEventListener('scroll', () => {
                 const navbar = document.getElementById('navbar');
-                const currentScroll = window.scrollY;
-                
-                if (currentScroll > 50) {
+                if (window.scrollY > 50) {
                     navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
                 } else {
                     navbar.style.boxShadow = 'none';
                 }
-                
-                lastScroll = currentScroll;
             });
         });
     </script>
