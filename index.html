@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Frequency Nation | The Frequency Live — Final Authority</title>
+    <meta name="description" content="Join the global prayer movement establishing God's authority across nations. Daily live intercession at 6AM, 2PM, and 10PM WAT.">
+    <meta name="theme-color" content="#1E40AF">
+    <link rel="icon" type="image/png" href="/Freq.PNG">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1E40AF;        /* Deep Blue */
+            --primary-dark: #1E3A8A;   /* Darker Blue */
+            --primary-light: #3B82F6;  /* Bright Blue */
+            --accent: #60A5FA;         /* Light Blue */
+            --gold: #D97706;           /* Amber for accents */
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;       /* Footer background - lighter */
+            --gray-900: #0F172A;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation - Clean White/Blue */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo-flame {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            min-height: 48px;
+            min-width: 48px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--gray-100);
+        }
+        
+        /* Hero Section - Blue Gradient */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .doctrine-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        .slogan {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-text {
+            font-size: 1.125rem;
+            max-width: 640px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            min-height: 52px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+        
+        /* Live Status Bar - Solid Blue */
+        .live-status-bar {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 12px 0;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .live-status-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+        
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #EF4444;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+        }
+        
+        /* Rhythm Grid */
+        .rhythm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .rhythm-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .rhythm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(30,64,175,0.1);
+            border-color: var(--primary-light);
+        }
+        
+        .time-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(30,64,175,0.3);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(30,64,175,0.1);
+            border-color: var(--accent);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        /* FIXED YOUTUBE SECTION */
+        .video-section {
+            background: var(--gray-50);
+            padding: 60px 0;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--gray-900);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            aspect-ratio: 16/9;
+        }
+        
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--gray-800), var(--gray-900));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, var(--gray-700), var(--gray-800));
+        }
+        
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(30,64,175,0.4);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: var(--primary-light);
+        }
+        
+        .play-btn i {
+            font-size: 2rem;
+            margin-left: 4px;
+            color: var(--white);
+        }
+        
+        .video-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Prayer Form */
+        .prayer-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: var(--white);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        /* Honeypot - hidden anti-spam */
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            visibility: hidden;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--gray-200);
+            border-left-width: 4px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .testimonial-location {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        
+        /* Books */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .book-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(30,64,175,0.1);
+            border-color: var(--primary-light);
+        }
+        
+        .book-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--white);
+            box-shadow: 0 8px 16px rgba(30,64,175,0.3);
+        }
+        
+        /* Flexible Giving Box */
+        .flexible-box {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 48px;
+            border-radius: 20px;
+            text-align: center;
+            color: var(--white);
+            margin-top: 48px;
+            box-shadow: 0 12px 32px rgba(30,64,175,0.3);
+        }
+        
+        .flexible-box h3 {
+            font-size: 1.875rem;
+            margin-bottom: 16px;
+        }
+        
+        .flexible-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        
+        .btn-flex {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-flex-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        .btn-flex-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .btn-flex-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .btn-flex-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--gray-800);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .toast.show {
+            display: flex;
+        }
+        
+        .toast.error {
+            border-left-color: var(--error);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* FIXED FOOTER - Better Contrast */
+        footer {
+            background: var(--gray-800); /* Changed from gray-900 to gray-800 for visibility */
+            color: #CBD5E1; /* Light gray for better contrast */
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 16px;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section a {
+            color: #94A3B8; /* Slightly darker than text for hierarchy but still visible */
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-section a:hover {
+            color: var(--white);
+            transform: translateX(4px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--white);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #94A3B8;
+        }
+        
+        .footer-bottom div {
+            color: var(--white);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .privacy-note {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-600);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .modal-close:hover {
+            background: var(--gray-100);
+            color: var(--gray-900);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-top: 1px solid var(--gray-200);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .prayer-form {
+                padding: 24px;
+                margin: 0 10px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .flexible-box {
+                padding: 32px 20px;
+                margin: 32px 10px 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .video-container {
+                margin: 0 10px;
+                border-radius: 12px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .flexible-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-flex {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .rhythm-card, .book-card {
+                padding: 24px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-8 {
+            margin-top: 2rem;
+        }
+        
+        .btn-accent {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-accent:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(30,64,175,0.3);
+        }
+        
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Message</span>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="#" class="logo">
+                <i class="fas fa-fire logo-flame"></i>
+                <span>Frequency Nation</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#live">Watch Live</a></li>
+                <li><a href="#rhythm">Prayer Rhythm</a></li>
+                <li><a href="#join">Join</a></li>
+                <li><a href="#prayer">Prayer Wall</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Live Status Bar -->
+    <div class="live-status-bar">
+        <div class="container">
+            <div class="live-status-content">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span>NEXT WATCH: <strong id="countdown">--:--:--</strong></span>
+                </div>
+                <div>6AM • 2PM • 10PM WAT Daily</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container hero-content">
+            <div class="doctrine-badge">
+                <i class="fas fa-crown"></i>
+                <span>The Excellency of God</span>
+            </div>
+            <h1>Frequency Nation</h1>
+            <div class="slogan">Final Authority</div>
+            <p class="hero-text">Join the global prayer movement establishing God's authority across nations. Daily live intercession at 6AM, 2PM, and 10PM WAT.</p>
+            <div class="btn-group">
+                <a href="#join" class="btn btn-primary"><i class="fas fa-bolt"></i> Join the Watch — $19/month</a>
+                <a href="#live" class="btn btn-secondary"><i class="fas fa-play"></i> Watch Live Prayer</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- FIXED Live Section with Proper YouTube Sizing -->
+    <section class="video-section" id="live">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Broadcast</h2>
+                <p class="section-subtitle">Join the global altar burning across time zones</p>
+            </div>
+            
+            <!-- Fixed Video Container with Aspect Ratio -->
+            <div class="video-container" id="videoContainer">
+                <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 8px;">Click to Load Live Stream</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">YouTube Live • Frequency Nation</p>
+                </div>
+            </div>
+            
+            <div class="stats-grid" id="statsContainer">
+                <div class="stat-card">
+                    <div class="stat-number" id="statIntercessors">47</div>
+                    <div class="stat-label">Active Intercessors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statNations">12</div>
+                    <div class="stat-label">Nations Represented</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statPrayers">1,247</div>
+                    <div class="stat-label">Prayers Lifted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Authority Coverage</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prayer Rhythm Section -->
+    <section id="rhythm" style="background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <h2>The 6-2-10 Authority Rhythm</h2>
+                <p class="section-subtitle">This is not a schedule. This is spiritual technology—unceasing intercession that keeps doors open where darkness held ground.</p>
+            </div>
+            <div class="rhythm-grid">
+                <div class="rhythm-card">
+                    <div class="time-badge">6:00 AM</div>
+                    <h3>Dawn Authority</h3>
+                    <p>Establishing the day's dominion. Alignment and territorial claim. Setting the spiritual temperature for the entire day.</p>
+                </div>
+                <div class="rhythm-card">
+                    <div class="time-badge">2:00 PM</div>
+                    <h3>Midday Alignment</h3>
+                    <p>Reinforcement and jurisdictional maintenance across nations. Breaking afternoon strongholds and sustaining momentum.</p>
+                </div>
+                <div class="rhythm-card">
+                    <div class="time-badge">10:00 PM</div>
+                    <h3>Night Watch</h3>
+                    <p>Intercession, protection, and advancement while darkness seems deepest. The watchman hour of maximum impact.</p>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#join" class="btn btn-accent"><i class="fas fa-shield-alt"></i> Stand as Watchman — $19/month</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Join Section -->
+    <section id="join" style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Stand in Frequency Nation</h2>
+                <p class="section-subtitle">Choose your governmental assignment. Every stand transmits authority.</p>
+            </div>
+            <div class="rhythm-grid">
+                <div class="rhythm-card">
+                    <h3>Watchman</h3>
+                    <div class="stat-number" style="font-size: 2rem; color: var(--primary);">$19<span style="font-size: 1rem; color: var(--gray-600);">/month</span></div>
+                    <p>Guard the Frequency. Enforce intercession. Exercise Final Authority through daily transmission.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--primary); color: white; text-align: center;"><i class="fas fa-eye"></i> Join Watchman</a>
+                </div>
+                <div class="rhythm-card" style="border: 2px solid var(--primary); transform: scale(1.02);">
+                    <h3>Ambassador</h3>
+                    <div class="stat-number" style="font-size: 2rem; color: var(--primary);">$50<span style="font-size: 1rem; color: var(--gray-600);">/month</span></div>
+                    <p>Represent heaven's will. Carry authority into your territory. Command outcomes as delegated envoy.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--primary); color: white; text-align: center;"><i class="fas fa-globe"></i> Become Ambassador</a>
+                </div>
+                <div class="rhythm-card">
+                    <h3>Pillar</h3>
+                    <div class="stat-number" style="font-size: 2rem; color: var(--primary);">$100<span style="font-size: 1rem; color: var(--gray-600);">/month</span></div>
+                    <p>Uphold the doctrine of Excellency. Sustain global transmission. Operate as foundational government.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--primary); color: white; text-align: center;"><i class="fas fa-church"></i> Stand as Pillar</a>
+                </div>
+            </div>
+            
+            <div class="flexible-box">
+                <h3>Transmit Freely</h3>
+                <p>Not ready for monthly assignment? Give any amount. Fuel the Frequency. Every transmission advances the authority—no tier required.</p>
+                <div class="flexible-buttons">
+                    <a href="#" class="btn-flex btn-flex-white"><i class="fab fa-paypal"></i> Give Any Amount</a>
+                    <a href="#" class="btn-flex btn-flex-outline"><i class="fas fa-mug-hot"></i> Buy Me a Coffee</a>
+                    <a href="#" class="btn-flex btn-flex-outline"><i class="fas fa-heart"></i> Ko-fi Support</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prayer Wall Section -->
+    <section id="prayer">
+        <div class="container">
+            <div class="section-header">
+                <h2>Global Prayer Wall</h2>
+                <p class="section-subtitle">Submit your prayer request. Join intercessors worldwide standing in agreement.</p>
+            </div>
+            
+            <!-- Honeypot Anti-Spam Field -->
+            <div class="honeypot">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                <label for="confirm_email">Confirm Email</label>
+                <input type="text" id="confirm_email" name="confirm_email" tabindex="-1" autocomplete="off">
+            </div>
+            
+            <form class="prayer-form" id="prayerForm" onsubmit="submitPrayer(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Your Name</label>
+                        <input type="text" id="prayerName" placeholder="Your name or Anonymous">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="prayerLocation" placeholder="City, Country">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="prayerEmail" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fab fa-whatsapp"></i> Phone / WhatsApp</label>
+                        <input type="tel" id="prayerPhone" placeholder="+1 (555) 123-4567">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-comment"></i> How to contact you?</label>
+                        <select id="contactPreference">
+                            <option value="none">Do not contact me</option>
+                            <option value="email">Email me</option>
+                            <option value="phone">Phone call</option>
+                            <option value="whatsapp">WhatsApp message</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-tag"></i> Category</label>
+                        <select id="prayerCategory">
+                            <option value="Healing">Healing</option>
+                            <option value="Family">Family Restoration</option>
+                            <option value="Financial">Financial Breakthrough</option>
+                            <option value="Nation">Nation/Territory</option>
+                            <option value="Spiritual">Spiritual Growth</option>
+                            <option value="Deliverance">Deliverance</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-pray"></i> Prayer Request *</label>
+                    <textarea id="prayerText" rows="4" placeholder="Share your prayer need..." required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500;">
+                            <input type="checkbox" id="isPublic" checked style="width: auto; height: auto;">
+                            <span>Share on public prayer wall (first name only)</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500;">
+                            <input type="checkbox" id="isUrgent" style="width: auto; height: auto;">
+                            <span>Mark as urgent (needs immediate prayer)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500;">
+                        <input type="checkbox" id="consent" required style="width: auto; height: auto;">
+                        <span>I consent to my prayer request being reviewed by our intercessors *</span>
+                    </label>
+                </div>
+                
+                <p class="privacy-note">
+                    <i class="fas fa-lock"></i> Your contact information is private and only used for follow-up. We never share your details.
+                </p>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--primary); color: white;" id="prayerSubmitBtn">
+                    <i class="fas fa-pray"></i> Submit Prayer Request
+                </button>
+            </form>
+            
+            <div class="stats-grid" id="recentPrayers" style="margin-top: 40px;">
+                <div class="stat-card" style="text-align: left;">
+                    <div style="font-size: 0.875rem; color: var(--gray-500); margin-bottom: 8px;">Recent Prayer</div>
+                    <p style="font-style: italic; margin: 8px 0; color: var(--gray-700);">"Healing for my mother's cancer diagnosis..."</p>
+                    <small style="color: var(--primary); font-weight: 600;">— Sarah T. • 2 hours ago</small>
+                </div>
+                <div class="stat-card" style="text-align: left;">
+                    <div style="font-size: 0.875rem; color: var(--gray-500); margin-bottom: 8px;">Recent Prayer</div>
+                    <p style="font-style: italic; margin: 8px 0; color: var(--gray-700);">"Financial breakthrough for my business..."</p>
+                    <small style="color: var(--primary); font-weight: 600;">— Michael R. • 5 hours ago</small>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonies Section -->
+    <section id="testimonies" style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Testimonies of Authority</h2>
+                <p class="section-subtitle">Reports of breakthrough from the Frequency Nation community.</p>
+            </div>
+            <div id="testimoniesContainer">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"After joining the Night Watch prayer, I received healing in my body that doctors couldn't explain. The Frequency family stood with me in faith, and three weeks later, my scans came back clear. This is Final Authority in action."</p>
+                    <div class="testimonial-author">Sarah M.</div>
+                    <div class="testimonial-location">Texas, USA • Healing</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"My marriage was restored through the intercession of this community. Three months of consistent prayer broke every chain of division. We are now stronger than ever."</p>
+                    <div class="testimonial-author">David K.</div>
+                    <div class="testimonial-location">Ontario, Canada • Restoration</div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button onclick="openTestimonyModal()" class="btn btn-secondary" style="border: 2px solid var(--gray-300); color: var(--gray-700); background: transparent; cursor: pointer;">
+                    <i class="fas fa-share-alt"></i> Share Your Testimony
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resources Section -->
+    <section id="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Authority Resources</h2>
+                <p class="section-subtitle">Deepen your stand with structured intercession frameworks.</p>
+            </div>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-icon"><i class="fas fa-book-bible"></i></div>
+                    <h3>Authority Prayer Manual</h3>
+                    <p>The operational framework for spiritual dominion. Decree structure, jurisdictional mapping, 6-2-10 architecture.</p>
+                    <div class="stat-number" style="font-size: 1.75rem; color: var(--primary);">$12.00</div>
+                    <button class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--primary); color: white;" onclick="initiateCheckout('manual')">
+                        <i class="fas fa-shopping-cart"></i> Get Manual
+                    </button>
+                </div>
+                <div class="book-card">
+                    <div class="book-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Prayers for Immigrants</h3>
+                    <p>Divine settlement under the Excellency of God. Favor, legal stability, territorial alignment, protection.</p>
+                    <div class="stat-number" style="font-size: 1.75rem; color: var(--primary);">$12.00</div>
+                    <button class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--primary); color: white;" onclick="initiateCheckout('immigrants')">
+                        <i class="fas fa-shopping-cart"></i> Get Prayers
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Email Signup Section -->
+    <section style="background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: var(--white);">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: var(--white);">Receive Authority Prayers</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Join 7 Days of Night Authority Prayers and global alignment updates.</p>
+            <a href="https://the-frequency-live.kit.com/" class="btn btn-primary" style="background: var(--white); color: var(--primary); margin-top: 24px;">
+                <i class="fas fa-envelope"></i> Join Frequency Nation
+            </a>
+        </div>
+    </section>
+    
+    <!-- FIXED FOOTER with Better Visibility -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Frequency Nation</h4>
+                    <p style="color: #94A3B8; line-height: 1.7;">Global prayer altar burning at 6AM, 2PM, 10PM WAT. Establishing Final Authority across nations through unceasing intercession.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@thefrequencylive1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/share/1H7chquiTd/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/thefrequencylive1" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/TheFreqHQlive" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#live"><i class="fas fa-video" style="font-size: 0.8rem;"></i> Watch Live</a></li>
+                        <li><a href="#rhythm"><i class="fas fa-clock" style="font-size: 0.8rem;"></i> Prayer Schedule</a></li>
+                        <li><a href="#join"><i class="fas fa-users" style="font-size: 0.8rem;"></i> Join the Watch</a></li>
+                        <li><a href="#prayer"><i class="fas fa-pray" style="font-size: 0.8rem;"></i> Prayer Wall</a></li>
+                        <li><a href="#resources"><i class="fas fa-book" style="font-size: 0.8rem;"></i> Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:admin@thefrequencylive.org"><i class="fas fa-envelope"></i> admin@thefrequencylive.org</a></li>
+                        <li><a href="#prayer"><i class="fas fa-pray"></i> Submit Prayer Request</a></li>
+                        <li><a href="/freqnation77"><i class="fas fa-lock"></i> Admin Access</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="color: var(--accent); font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">The Excellency of God</div>
+                <p style="margin-top: 8px; font-size: 1.1rem; font-weight: 600; color: white;">Final Authority</p>
+                <p style="margin-top: 16px; font-size: 0.875rem;">&copy; 2026 The Frequency Live. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Testimony Modal -->
+    <div id="testimonyModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTestimonyModal()">&times;</button>
+            <h2 style="margin-bottom: 24px; color: var(--primary-dark);">Share Your Testimony</h2>
+            <form id="testimonyForm" onsubmit="submitTestimony(event)">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" id="testimonyName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="testimonyEmail">
+                </div>
+                <div class="form-group">
+                    <label>Phone/WhatsApp</label>
+                    <input type="tel" id="testimonyPhone">
+                </div>
+                <div class="form-group">
+                    <label>How to contact you?</label>
+                    <select id="testimonyContactPreference">
+                        <option value="none">Do not contact me</option>
+                        <option value="email">Email me</option>
+                        <option value="phone">Phone call</option>
+                        <option value="whatsapp">WhatsApp message</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="testimonyLocation">
+                </div>
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="testimonyCategory" required>
+                        <option value="">Select...</option>
+                        <option value="Healing">Healing</option>
+                        <option value="Deliverance">Deliverance</option>
+                        <option value="Financial">Financial Breakthrough</option>
+                        <option value="Family">Family Restoration</option>
+                        <option value="Guidance">Divine Guidance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Your Testimony *</label>
+                    <textarea id="testimonyText" rows="5" required placeholder="Share what God has done in your life..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 500;">
+                        <input type="checkbox" id="testimonyConsent" required style="width: auto; height: auto;">
+                        <span>I consent to my testimony being shared publicly *</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--primary); color: white;">
+                    <i class="fas fa-share-alt"></i> Submit Testimony
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = '/api';
+        
+        // Helper Functions
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            
+            if (isError) {
+                toast.classList.add('error');
+                toast.querySelector('i').className = 'fas fa-exclamation-circle';
+            } else {
+                toast.classList.remove('error');
+                toast.querySelector('i').className = 'fas fa-check-circle';
+            }
+            
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                // Reset icon after hiding
+                setTimeout(() => {
+                    toast.querySelector('i').className = 'fas fa-check-circle';
+                }, 300);
+            }, 4000);
+        }
+        
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+            
+            // Change icon
+            const btn = document.querySelector('.mobile-menu-btn i');
+            if (navLinks.classList.contains('active')) {
+                btn.className = 'fas fa-times';
+            } else {
+                btn.className = 'fas fa-bars';
+            }
+        }
+        
+        // FIXED YOUTUBE LOADING
+        function loadVideo() {
+            const container = document.getElementById('videoContainer');
+            const placeholder = document.getElementById('videoPlaceholder');
+            
+            // Show loading state
+            placeholder.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                    <div class="loading"></div>
+                    <p>Loading stream...</p>
+                </div>
+            `;
+            
+            // Create iframe with proper sizing
+            setTimeout(() => {
+                container.innerHTML = `
+                    <iframe 
+                        class="video-iframe"
+                        src="https://www.youtube.com/embed/live_stream?channel=UCQrSG7WE4zi7UMYsiFhNV9A&autoplay=1&rel=0&modestbranding=1" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        loading="eager">
+                    </iframe>
+                `;
+                showToast('Live stream loading...');
+            }, 500);
+        }
+        
+        function updateCountdown() {
+            const now = new Date();
+            const watTime = new Date(now.toLocaleString("en-US", {timeZone: "Africa/Lagos"}));
+            const hours = watTime.getHours();
+            const watches = [6, 14, 22];
+            let nextWatch = watches.find(w => w > hours) || watches[0];
+            let hoursRemaining = nextWatch - hours;
+            
+            if (nextWatch <= hours) hoursRemaining += 24;
+            
+            const minutes = 59 - watTime.getMinutes();
+            const seconds = 59 - watTime.getSeconds();
+            
+            document.getElementById('countdown').textContent = 
+                `${hoursRemaining.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        }
+        
+        // Prayer Submission
+        async function submitPrayer(event) {
+            event.preventDefault();
+            
+            // Honeypot check
+            const website = document.getElementById('website').value;
+            const confirmEmail = document.getElementById('confirm_email').value;
+            if (website || confirmEmail) {
+                showToast('Prayer submitted successfully');
+                document.getElementById('prayerForm').reset();
+                return;
+            }
+            
+            const btn = document.getElementById('prayerSubmitBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            
+            try {
+                const response = await fetch(`${API_BASE}/prayer/submit`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('prayerName').value,
+                        email: document.getElementById('prayerEmail').value,
+                        phone: document.getElementById('prayerPhone').value,
+                        contact_preference: document.getElementById('contactPreference').value,
+                        location: document.getElementById('prayerLocation').value,
+                        category: document.getElementById('prayerCategory').value,
+                        prayer_text: document.getElementById('prayerText').value,
+                        is_public: document.getElementById('isPublic').checked,
+                        is_urgent: document.getElementById('isUrgent').checked,
+                        consent: document.getElementById('consent').checked
+                    })
+                });
+                
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Submission failed');
+                
+                showToast('🙏 Prayer request submitted! Our intercessors will stand with you.');
+                document.getElementById('prayerForm').reset();
+                
+                // Reload recent prayers
+                loadRecentPrayers();
+                loadStats();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showToast(error.message || 'Error submitting prayer. Please try again.', true);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
+        }
+        
+        // Testimony Modal
+        function openTestimonyModal() {
+            document.getElementById('testimonyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeTestimonyModal() {
+            document.getElementById('testimonyModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        async function submitTestimony(event) {
+            event.preventDefault();
+            
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            
+            try {
+                const response = await fetch(`${API_BASE}/testimony/submit`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        submitter_name: document.getElementById('testimonyName').value,
+                        email: document.getElementById('testimonyEmail').value,
+                        phone: document.getElementById('testimonyPhone').value,
+                        contact_preference: document.getElementById('testimonyContactPreference').value,
+                        location: document.getElementById('testimonyLocation').value,
+                        testimony_text: document.getElementById('testimonyText').value,
+                        category: document.getElementById('testimonyCategory').value,
+                        consent: document.getElementById('testimonyConsent').checked
+                    })
+                });
+                
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Submission failed');
+                
+                showToast('✨ Thank you! Your testimony has been submitted for review.');
+                closeTestimonyModal();
+                event.target.reset();
+                loadTestimonies();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showToast(error.message || 'Error submitting testimony. Please try again.', true);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
+        }
+        
+        // Load Data
+        async function loadRecentPrayers() {
+            try {
+                const response = await fetch(`${API_BASE}/prayer/list?limit=2`);
+                const result = await response.json();
+                if (result.prayers && result.prayers.length > 0) {
+                    const container = document.getElementById('recentPrayers');
+                    container.innerHTML = result.prayers.map(prayer => `
+                        <div class="stat-card" style="text-align: left;">
+                            <div style="font-size: 0.875rem; color: var(--gray-500); margin-bottom: 8px;">Recent Prayer</div>
+                            <p style="font-style: italic; margin: 8px 0; color: var(--gray-700);">"${escapeHtml(prayer.prayer_text.substring(0, 80))}${prayer.prayer_text.length > 80 ? '...' : ''}"</p>
+                            <small style="color: var(--primary); font-weight: 600;">— ${prayer.name ? escapeHtml(prayer.name.split(' ')[0]) : 'Anonymous'} • ${new Date(prayer.created_at).toLocaleDateString()}</small>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading prayers:', error);
+            }
+        }
+        
+        async function loadTestimonies() {
+            try {
+                const response = await fetch(`${API_BASE}/testimony/list?limit=2`);
+                const result = await response.json();
+                if (result.testimonies && result.testimonies.length > 0) {
+                    const container = document.getElementById('testimoniesContainer');
+                    container.innerHTML = result.testimonies.map(t => `
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"${escapeHtml(t.testimony_text)}"</p>
+                            <div class="testimonial-author">${escapeHtml(t.submitter_name)}</div>
+                            <div class="testimonial-location">${escapeHtml(t.location || 'Location unknown')}${t.category ? ' • ' + escapeHtml(t.category) : ''}</div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading testimonies:', error);
+            }
+        }
+        
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/system/health`);
+                const result = await response.json();
+                if (result.services?.database?.healthy) {
+                    console.log('System healthy');
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+        
+        function initiateCheckout(product) {
+            showToast('Payment system coming soon. Thank you for your support!');
+        }
+        
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+        
+        // Close modal on escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTestimonyModal();
+            }
+        });
+        
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('testimonyModal');
+            if (event.target === modal) {
+                closeTestimonyModal();
+            }
+        };
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+            loadRecentPrayers();
+            loadTestimonies();
+            loadStats();
+            
+            // Navbar scroll effect
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                const currentScroll = window.scrollY;
+                
+                if (currentScroll > 50) {
+                    navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                } else {
+                    navbar.style.boxShadow = 'none';
+                }
+                
+                lastScroll = currentScroll;
+            });
+        });
+    </script>
+</body>
+</html>

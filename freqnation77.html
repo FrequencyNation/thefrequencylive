@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Frequency Nation</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f4f8;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        
+        /* Login Screen */
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        .login-box {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-box h1 {
+            color: #1e40af;
+            margin-bottom: 8px;
+            font-size: 1.75rem;
+        }
+        .login-box p { color: #64748b; margin-bottom: 24px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #1e40af;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: #1e3a8a; transform: translateY(-1px); }
+        .btn:active { transform: translateY(0); }
+        .error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 12px;
+            text-align: center;
+            display: none;
+        }
+        .error.show { display: block; }
+        
+        /* Dashboard */
+        .dashboard { display: none; }
+        .dashboard.active { display: block; }
+        
+        .header {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .header h1 { color: #1e40af; font-size: 1.5rem; }
+        .logout-btn {
+            padding: 10px 20px;
+            background: #64748b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .logout-btn:hover { background: #475569; }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e40af;
+        }
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: #1e40af;
+            color: white;
+            border-color: #1e40af;
+        }
+        .tab:hover:not(.active) { border-color: #3b82f6; color: #3b82f6; }
+        
+        /* Content Cards */
+        .content-panel { display: none; }
+        .content-panel.active { display: block; }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid #3b82f6;
+        }
+        .card.urgent { border-left-color: #dc2626; }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .card-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.125rem;
+        }
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-urgent { background: #fee2e2; color: #dc2626; }
+        .badge-contact { background: #dbeafe; color: #1e40af; }
+        .badge-pending { background: #fef3c7; color: #d97706; }
+        
+        .card-body {
+            color: #475569;
+            margin: 16px 0;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        .card-meta {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+        .card-meta span { margin-right: 16px; }
+        
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-approve {
+            padding: 10px 20px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-approve:hover { background: #059669; }
+        .btn-reject {
+            padding: 10px 20px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-reject:hover { background: #dc2626; }
+        .btn-whatsapp {
+            padding: 10px 20px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-whatsapp:hover { background: #128c7e; }
+        
+        .notes-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+        }
+        .notes-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+        }
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: #cbd5e1;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+        .page-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .page-btn.active {
+            background: #1e40af;
+            color: white;
+            border-color: #1e40af;
+        }
+        .page-btn:hover:not(.active) { border-color: #3b82f6; color: #3b82f6; }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+        }
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #1e40af;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .container { padding: 16px; }
+            .login-box { padding: 32px 24px; margin: 16px; }
+            .header { flex-direction: column; text-align: center; }
+            .card { padding: 16px; }
+            .actions { flex-direction: column; }
+            .actions button, .actions a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <h1>🔐 Admin Access</h1>
+            <p>Frequency Nation Dashboard</p>
+            <div class="input-group">
+                <label>Admin Secret Key</label>
+                <input type="password" id="secretKey" placeholder="Enter your admin secret" autofocus>
+            </div>
+            <button class="btn" onclick="login()">Access Dashboard</button>
+            <div class="error" id="loginError">Invalid secret key</div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="header">
+                <div>
+                    <h1>Frequency Nation Admin</h1>
+                    <p style="color: #64748b; font-size: 0.875rem;">Manage prayers, testimonies, and follow-ups</p>
+                </div>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+            
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-number" id="statTotalPrayers">-</div>
+                    <div class="stat-label">Total Prayers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statPendingPrayers">-</div>
+                    <div class="stat-label">Pending Prayers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statTotalTestimonies">-</div>
+                    <div class="stat-label">Total Testimonies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statPendingTestimonies">-</div>
+                    <div class="stat-label">Pending Testimonies</div>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('prayers')">
+                    🙏 Prayers (<span id="tabPrayerCount">0</span>)
+                </button>
+                <button class="tab" onclick="switchTab('testimonies')">
+                    ✨ Testimonies (<span id="tabTestimonyCount">0</span>)
+                </button>
+            </div>
+            
+            <div class="content-panel active" id="prayersPanel">
+                <div id="prayersList" class="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 16px;">Loading prayers...</p>
+                </div>
+                <div class="pagination" id="prayersPagination"></div>
+            </div>
+            
+            <div class="content-panel" id="testimoniesPanel">
+                <div id="testimoniesList" class="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 16px;">Loading testimonies...</p>
+                </div>
+                <div class="pagination" id="testimoniesPagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        const API_BASE = '/api';
+        let currentTab = 'prayers';
+        let currentPage = { prayers: 1, testimonies: 1 };
+        let totalPages = { prayers: 1, testimonies: 1 };
+        let adminSecret = '';
+
+        // Auth
+        async function login() {
+            const secret = document.getElementById('secretKey').value.trim();
+            if (!secret) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/admin/verify`, {
+                    headers: { 'Authorization': `Bearer ${secret}` }
+                });
+                
+                if (response.ok) {
+                    adminSecret = secret;
+                    sessionStorage.setItem('fn_admin_secret', secret);
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('dashboard').classList.add('active');
+                    loadDashboard();
+                } else {
+                    document.getElementById('loginError').classList.add('show');
+                    setTimeout(() => document.getElementById('loginError').classList.remove('show'), 3000);
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('Connection failed. Please try again.');
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('fn_admin_secret');
+            adminSecret = '';
+            location.reload();
+        }
+
+        // Check existing session
+        async function checkAuth() {
+            const saved = sessionStorage.getItem('fn_admin_secret');
+            if (saved) {
+                try {
+                    const response = await fetch(`${API_BASE}/admin/verify`, {
+                        headers: { 'Authorization': `Bearer ${saved}` }
+                    });
+                    if (response.ok) {
+                        adminSecret = saved;
+                        document.getElementById('loginScreen').style.display = 'none';
+                        document.getElementById('dashboard').classList.add('active');
+                        loadDashboard();
+                        return;
+                    }
+                } catch (e) {
+                    console.error('Auth check failed');
+                }
+                sessionStorage.removeItem('fn_admin_secret');
+            }
+        }
+
+        // Tab Switching
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(`${tab}Panel`).classList.add('active');
+            
+            loadContent(tab);
+        }
+
+        // Load Dashboard Data
+        async function loadDashboard() {
+            await Promise.all([
+                loadStats(),
+                loadContent('prayers')
+            ]);
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/stats`, {
+                    headers: { 'Authorization': `Bearer ${adminSecret}` }
+                });
+                const data = await response.json();
+                
+                document.getElementById('statTotalPrayers').textContent = data.total_prayers || 0;
+                document.getElementById('statPendingPrayers').textContent = data.pending_prayers || 0;
+                document.getElementById('statTotalTestimonies').textContent = data.total_testimonies || 0;
+                document.getElementById('statPendingTestimonies').textContent = data.pending_testimonies || 0;
+                
+                document.getElementById('tabPrayerCount').textContent = data.pending_prayers || 0;
+                document.getElementById('tabTestimonyCount').textContent = data.pending_testimonies || 0;
+            } catch (err) {
+                console.error('Stats error:', err);
+            }
+        }
+
+        async function loadContent(type, page = 1) {
+            currentPage[type] = page;
+            const container = document.getElementById(`${type}List`);
+            container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading...</p></div>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/admin/${type}?status=pending&page=${page}&limit=10`, {
+                    headers: { 'Authorization': `Bearer ${adminSecret}` }
+                });
+                
+                if (!response.ok) throw new Error('Failed to load');
+                const data = await response.json();
+                
+                const items = data[type] || data;
+                const pagination = data.pagination || { total: items.length, pages: 1 };
+                totalPages[type] = pagination.pages || 1;
+                
+                renderItems(type, items);
+                renderPagination(type, pagination);
+            } catch (err) {
+                container.innerHTML = `<div class="empty-state">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Error loading ${type}. <button onclick="loadContent('${type}')">Retry</button></p>
+                </div>`;
+            }
+        }
+
+        function renderItems(type, items) {
+            const container = document.getElementById(`${type}List`);
+            
+            if (!items || items.length === 0) {
+                container.innerHTML = `<div class="empty-state">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>No pending ${type}</h3>
+                    <p>All caught up! Check back later.</p>
+                </div>`;
+                return;
+            }
+            
+            container.innerHTML = items.map(item => {
+                const isPrayer = type === 'prayers';
+                const text = isPrayer ? item.prayer_text : item.testimony_text;
+                const name = isPrayer ? (item.name || 'Anonymous') : item.submitter_name;
+                const isUrgent = item.is_urgent;
+                const contactPref = item.contact_preference;
+                
+                let contactBadge = '';
+                if (contactPref && contactPref !== 'none') {
+                    contactBadge = `<span class="badge badge-contact">${contactPref}</span>`;
+                }
+                
+                return `
+                <div class="card ${isUrgent ? 'urgent' : ''}">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">${escapeHtml(name)} ${isUrgent ? '<span style="color: #dc2626;">(URGENT)</span>' : ''}</div>
+                            <div class="badges">
+                                <span class="badge badge-pending">PENDING</span>
+                                ${contactBadge}
+                            </div>
+                        </div>
+                        <small style="color: #64748b;">${new Date(item.created_at).toLocaleString()}</small>
+                    </div>
+                    
+                    <div class="card-body">${escapeHtml(text)}</div>
+                    
+                    <div class="card-meta">
+                        ${item.email ? `<span><i class="fas fa-envelope"></i> ${escapeHtml(item.email)}</span>` : ''}
+                        ${item.phone ? `<span><i class="fas fa-phone"></i> ${escapeHtml(item.phone)}</span>` : ''}
+                        ${item.location ? `<span><i class="fas fa-map-marker-alt"></i> ${escapeHtml(item.location)}</span>` : ''}
+                        ${item.category ? `<span><i class="fas fa-tag"></i> ${escapeHtml(item.category)}</span>` : ''}
+                    </div>
+                    
+                    ${isPrayer ? `
+                    <div style="margin-bottom: 12px;">
+                        <textarea class="notes-input" id="notes-${item.id}" placeholder="Add follow-up notes (optional)..."></textarea>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="actions">
+                        ${item.phone ? `<a href="https://wa.me/${formatWhatsApp(item.phone)}" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>` : ''}
+                        <button class="btn-approve" onclick="moderate('${type.slice(0, -1)}', '${item.id}', 'approve')">
+                            <i class="fas fa-check"></i> Approve
+                        </button>
+                        <button class="btn-reject" onclick="moderate('${type.slice(0, -1)}', '${item.id}', 'reject')">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderPagination(type, pagination) {
+            const container = document.getElementById(`${type}Pagination`);
+            if (!pagination || pagination.pages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            
+            let html = '';
+            for (let i = 1; i <= pagination.pages; i++) {
+                html += `<button class="page-btn ${currentPage[type] === i ? 'active' : ''}" 
+                    onclick="loadContent('${type}', ${i})">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        async function moderate(type, id, action) {
+            const notes = type === 'prayer' ? document.getElementById(`notes-${id}`)?.value : null;
+            
+            try {
+                const response = await fetch(`${API_BASE}/admin/moderate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${adminSecret}`
+                    },
+                    body: JSON.stringify({ type, id, action, follow_up_notes: notes })
+                });
+                
+                if (response.ok) {
+                    loadContent(currentTab, currentPage[currentTab]);
+                    loadStats(); // Refresh stats
+                } else {
+                    const err = await response.json();
+                    alert('Error: ' + (err.error || 'Failed to moderate'));
+                }
+            } catch (err) {
+                console.error('Moderate error:', err);
+                alert('Connection error. Please try again.');
+            }
+        }
+
+        function formatWhatsApp(phone) {
+            if (!phone) return '';
+            let clean = phone.replace(/\D/g, '');
+            if (clean.startsWith('0') && clean.length === 10) {
+                clean = '234' + clean.substring(1);
+            }
+            return clean;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Enter key on login
+        document.getElementById('secretKey')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') login();
+        });
+
+        // Init
+        checkAuth();
+    </script>
+</body>
+</html>

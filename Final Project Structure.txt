@@ -1,0 +1,38 @@
+thefrequencylive/
+├── .github/
+│   └── workflows/
+│       ├── keepalive.yml
+│       └── auto-commit-keepalive.yml
+├── api/
+│   ├── prayer/
+│   │   ├── submit.js
+│   │   └── list.js
+│   ├── testimony/
+│   │   ├── submit.js
+│   │   └── list.js
+│   ├── admin/              ← NEW SECURE ROUTES
+│   │   ├── verify.js
+│   │   ├── prayers.js
+│   │   ├── testimonies.js
+│   │   ├── stats.js
+│   │   └── moderate.js
+│   ├── download/
+│   │   └── serve.js
+│   └── system/
+│       ├── health.js
+│       └── keepalive.js
+├── src/
+│   └── lib/
+│       ├── supabase.js
+│       ├── rateLimiter.js
+│       └── auth.js
+├── public/
+│   ├── Freq.PNG           ← Your logo (place here)
+│   └── downloads/         ← PDF resources
+├── .env.example
+├── .gitignore
+├── freqnation77.html      ← SECURE ADMIN PANEL (renamed from admin.html)
+├── index.html             ← FIXED THEME + YOUTUBE + FOOTER
+├── package.json
+├── README.md
+└── vercel.json

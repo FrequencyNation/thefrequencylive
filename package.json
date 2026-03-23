@@ -1,0 +1,19 @@
+{
+  "name": "frequency-nation",
+  "version": "1.0.0",
+  "description": "The Frequency Live - Global Prayer Movement",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "vercel": "^33.5.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
