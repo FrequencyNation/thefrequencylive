@@ -2,8 +2,8 @@ name: Keep Supabase Alive
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # Once per day at midnight (Hobby tier limit)
-  workflow_dispatch:
+    - cron: "0 */12 * * *"   # Every 12 hours (GitHub free tier allows this)
+  workflow_dispatch:          # Manual trigger option
 
 jobs:
   ping:
@@ -14,4 +14,4 @@ jobs:
           curl -X GET "https://thefrequencylive.org/api/system/keepalive" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             --fail --silent --output /dev/null
-          echo "✅ Keep-alive ping successful at $(date)"
+          echo "Keep-alive ping successful at $(date)"
